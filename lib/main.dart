@@ -1,3 +1,4 @@
+import 'package:chat_simulator/screens/pantalla_chat.dart';
 import 'package:chat_simulator/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -11,15 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: TemaDeLaApp().tema(),
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Chat simulator'),
-        ),
-        body: const Center(
-          child: Text('Chat simulator'),
-        ),
-      ),
+      title: 'Chat simulator',
+      home: PantallaChat(),
     );
   }
 }
