@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 const List<Color> _temasDeLaApp = [
   Colors.purple,
   Colors.green,
-  Colors.blue,
+  Color.fromARGB(255, 156, 217, 245),
   Colors.redAccent,
   Colors.yellowAccent
 ];

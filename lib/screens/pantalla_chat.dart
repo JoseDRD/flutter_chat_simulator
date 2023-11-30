@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:chat_simulator/widgets/chat.dart';
 import 'package:flutter/material.dart';
 
 class PantallaChat extends StatelessWidget {
@@ -17,23 +17,18 @@ class PantallaChat extends StatelessWidget {
           title: const Text('Chat simulator'),
         ),
         body: SafeArea(
-          child: Column(
-            children: [
-              Expanded(
-                child: Container(
-                  color: Colors.red,
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 10
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 10
-                ),
-                child: Text('Hola')
-              )
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 10
+            ),
+            child: Column(
+              children: [
+                Chat(),
+                TextField(
+
+                )
+              ],
+            ),
           )
         ),
       );
