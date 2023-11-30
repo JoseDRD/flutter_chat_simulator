@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: TemaDeLaApp().tema(),
       title: 'Chat simulator',
-      home: PantallaChat(),
+      home: const PantallaChat(),
     );
   }
 }
