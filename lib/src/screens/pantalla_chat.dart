@@ -1,4 +1,5 @@
-import 'package:chat_simulator/widgets/chat.dart';
+import 'package:chat_simulator/src/widgets/chat.dart';
+import 'package:chat_simulator/src/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 
 class PantallaChat extends StatelessWidget {
@@ -14,19 +15,17 @@ class PantallaChat extends StatelessWidget {
               backgroundImage: NetworkImage('https://elcomercio.pe/resizer/0-ranfKF_sQNBuF7FmnRQB6ZMS4=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/GJIUAERKF5EL5D63NH7KGSVMJI.png'),
             ),
           ),
-          title: const Text('Chat simulator'),
+          title: const Text('Mitsuri ❤️❤️❤️'),
         ),
-        body: SafeArea(
+        body:  SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 10
             ),
             child: Column(
               children: [
-                Chat(),
-                TextField(
-
-                )
+                const Chat(),
+                const MiTextField(),
               ],
             ),
           )
