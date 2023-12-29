@@ -1,12 +1,19 @@
+import 'package:chat_simulator/src/providers/mensaje_provider.dart';
 import 'package:chat_simulator/src/widgets/chat.dart';
 import 'package:chat_simulator/src/widgets/text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PantallaChat extends StatelessWidget {
   const PantallaChat({super.key});
 
+  
+
   @override
   Widget build(BuildContext context) {
+
+    final mensajes = context.watch<MensajesProvider>();
+
     return Scaffold(
         appBar: AppBar(
           leading: const Padding(
@@ -17,7 +24,7 @@ class PantallaChat extends StatelessWidget {
           ),
           title: const Text('Mitsuri ❤️❤️❤️'),
         ),
-        body:  SafeArea(
+        body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 10
@@ -25,7 +32,9 @@ class PantallaChat extends StatelessWidget {
             child: Column(
               children: [
                 const Chat(),
-                const MiTextField(),
+                MiTextField(
+                  enviar: mensajes.enviarMensaje
+                ),
               ],
             ),
           )

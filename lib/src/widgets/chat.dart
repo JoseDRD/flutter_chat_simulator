@@ -1,18 +1,27 @@
+import 'package:chat_simulator/src/domain/entities/mensaje.dart';
+import 'package:chat_simulator/src/providers/mensaje_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Chat extends StatelessWidget {
   const Chat({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    final chatProvider = context.watch<MensajesProvider>();
+
     return Expanded(
       child: ListView.builder(
-        itemCount: 100,
+        controller: chatProvider.controladorDelScroll,
+        itemCount: chatProvider.listaDeMensajes.length,
         itemBuilder: (context, index) {
-          return index % 2 == 0
-            ? _BurbujaDelChatEl()
-            : _BurbujaDelChatElla();
           
+          final mensaje = chatProvider.listaDeMensajes[index];
+
+          return (mensaje.escritoPor == EscritoPor.mi) 
+            ? _BurbujaDelChatEl(mensaje)
+            : _BurbujaDelChatElla();
         },
       ),
     );
@@ -20,6 +29,9 @@ class Chat extends StatelessWidget {
 }
 
 class _BurbujaDelChatEl extends StatelessWidget {
+
+  final Mensaje mensaje;
+  _BurbujaDelChatEl(this.mensaje);
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +46,10 @@ class _BurbujaDelChatEl extends StatelessWidget {
             color: color.primary,
             borderRadius: const BorderRadius.all(Radius.circular(100))
           ),
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text('Hola',
-              style: TextStyle(
+          child:  Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(mensaje.texto,
+              style: const TextStyle(
                 color: Colors.white
               ),
             ),

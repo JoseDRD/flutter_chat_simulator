@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 
 class MiTextField extends StatelessWidget {
-  const MiTextField({super.key});
+
+  final ValueChanged<String> enviar;
+
+  const MiTextField({
+    required this.enviar,
+    super.key
+    });
 
   @override
   Widget build(BuildContext context) {
+    
+    
 
-    final texto_actual = TextEditingController();
+    final textoActual = TextEditingController();
 
-    final colores = Theme.of(context).colorScheme;
+    //final colores = Theme.of(context).colorScheme;
+
+    final focusNode = FocusNode();
 
     final borde = UnderlineInputBorder(
       borderRadius: BorderRadius.circular(40),
@@ -23,22 +33,25 @@ class MiTextField extends StatelessWidget {
         suffixIcon: IconButton(
           icon: const Icon(Icons.send_outlined),
           onPressed: (){
-            texto_actual.clear();
+            focusNode.unfocus();
+            enviar(textoActual.text);
+            textoActual.clear();
           },
         )
       );
 
 
-
     return TextFormField(
       decoration: decoracion,
-      
-      controller: texto_actual,
+      controller: textoActual,
+      focusNode: focusNode,
+
+      onTapOutside: (evento) => focusNode.unfocus(),
+
       onFieldSubmitted: (textoCompleto){
-        texto_actual.clear();
-      },
-      onChanged: (texto){
-        print(texto);
+        enviar(textoCompleto);
+        textoActual.clear();
+        focusNode.requestFocus();
       },
     );
   }
