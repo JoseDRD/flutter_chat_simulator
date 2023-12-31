@@ -21,7 +21,7 @@ class Chat extends StatelessWidget {
 
           return (mensaje.escritoPor == EscritoPor.mi) 
             ? _BurbujaDelChatEl(mensaje)
-            : _BurbujaDelChatElla();
+            : _BurbujaDelChatElla(mensaje);
         },
       ),
     );
@@ -31,6 +31,7 @@ class Chat extends StatelessWidget {
 class _BurbujaDelChatEl extends StatelessWidget {
 
   final Mensaje mensaje;
+
   _BurbujaDelChatEl(this.mensaje);
 
   @override
@@ -63,6 +64,13 @@ class _BurbujaDelChatEl extends StatelessWidget {
 
 class _BurbujaDelChatElla extends StatelessWidget {
 
+  final Mensaje mensaje;
+
+  
+  _BurbujaDelChatElla(
+    this.mensaje
+  );
+
   @override
   Widget build(BuildContext context) {
 
@@ -77,10 +85,11 @@ class _BurbujaDelChatElla extends StatelessWidget {
             color: color.secondary,
             borderRadius: const BorderRadius.all(Radius.circular(100))
           ),
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text('Hola, como estas?',
-              style: TextStyle(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              mensaje.texto,
+              style: const TextStyle(
                 color: Colors.white
               ),
             ),
@@ -90,7 +99,7 @@ class _BurbujaDelChatElla extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Image.network(
-            'https://www.gifcen.com/wp-content/uploads/2023/07/mitsuri-wallpaper-6.gif',
+            mensaje.imagenUrl,
             width: tamano.width * 0.7,
             height: 150,
             fit: BoxFit.cover,
